@@ -68,6 +68,7 @@ export function initUI(elements, fnToGetUser) {
     historyContainerLeave = elements.historyContainerLeave;
     historyContainerOut = elements.historyContainerOut;
     historyContent = elements.historyContent;
+    mainAppContainer = elements.mainAppContainer; // ◄◄ បន្ថែមបន្ទាត់នេះ
     attendanceIframe = elements.attendanceIframe;
 
     // --- Attach UI Event Listeners ---
@@ -231,7 +232,15 @@ export function navigateTo(pageId) {
 
     const targetPage = document.getElementById(pageId);
     if (targetPage) targetPage.classList.remove('hidden');
-
+    / --- NEW FULLSCREEN LOGIC ---
+if (mainAppContainer) { // ◄◄ បន្ថែម block នេះ
+    if (pageId === 'page-daily-attendance') {
+        mainAppContainer.classList.add('fullscreen-iframe-mode');
+    } else {
+        mainAppContainer.classList.remove('fullscreen-iframe-mode');
+    }
+}
+// --- END NEW BLOCK ---
     if (bottomNav) {
         if (pageId === 'page-request-leave' || pageId === 'page-request-out' || pageId === 'page-daily-attendance') {
             bottomNav.classList.add('hidden');
