@@ -299,7 +299,7 @@ async function setupApplicationModules() {
 
     // 3. Initialize all modules
     initUtils(elements);
-    initUI(elements);
+    initUI(elements, () => currentUser);
     initFaceScan(elements, db, () => loginUser(selectedUserId)); // Pass login callback
     initForms(elements, db, auth, () => currentUser); // Pass function to get current user
     initHistory(elements, db, () => currentUser); // Pass function to get current user
