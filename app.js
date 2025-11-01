@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     // Start loading face models (don't need to wait)
                     if (typeof faceapi !== 'undefined') {
                         if (scanFaceBtn) scanFaceBtn.disabled = true;
-                        loadFaceApiModels();
+                        //loadFaceApiModels();
                     } else {
                         console.error("Face-API.js មិនអាចទាញយកបានត្រឹមត្រូវទេ។");
                         if (modelStatusEl) modelStatusEl.textContent = 'Error: មិនអាចទាញយក Library ស្កេនមុខបាន';
@@ -324,7 +324,14 @@ async function setupApplicationModules() {
     if (elements.logoutBtn) {
         elements.logoutBtn.addEventListener('click', logout);
     }
-
+    // 6. NOW load face models (after modelStatusEl is initialized by initFaceScan)
+    if (typeof faceapi !== 'undefined') { // <--- ✅ បន្ថែមចាប់ពីទីនេះ
+        if (scanFaceBtn) scanFaceBtn.disabled = true;
+        loadFaceApiModels(); 
+    } else {
+        console.error("Face-API.js មិនអាចទាញយកបានត្រឹមត្រូវទេ។");
+        if (elements.modelStatusEl) elements.modelStatusEl.textContent = 'Error: មិនអាចទាញយក Library ស្កេនមុខបាន';
+    } // <--- ✅ បន្ថែមដល់ទីនេះ
     return true; // Setup complete
 }
 
