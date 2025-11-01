@@ -15,7 +15,7 @@ import { firebaseConfig, GVIZ_URL, setCollectionPaths } from './config.js';
 import { initUtils, showCustomAlert } from './utils.js';
 
 // --- UI Import (File 3) ---
-import { loadHTMLModules, initUI, navigateTo, populateUserDropdown, populateAccountPage } from './ui.js';
+import { loadHTMLModules, initUI, navigateTo, populateUserDropdown, populateAccountPage, setupSearchableDropdown } from './ui.js';
 
 // --- FaceScan Import (File 4) ---
 import { initFaceScan, loadFaceApiModels, startFaceScan, clearUserReferenceDescriptor } from './faceScan.js';
