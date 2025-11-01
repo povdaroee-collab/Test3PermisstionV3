@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                                 showLoggedInState(parsedUser); 
                                 return; // Skip normal flow
                             }
-                        } catch (e)_ {
+                        } catch (e){
                             localStorage.removeItem('leaveAppUser');
                         }
                     }
