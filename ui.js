@@ -102,12 +102,16 @@ export function initUI(elements, fnToGetUser) {
             
             console.log("Opening Daily Attendance page for user:", currentUser.id);
             
-            // បញ្ជូន User ID តាម URL parameter
+            // បញ្ជូន User ID និង សញ្ញា embedded តាម URL parameter
             const attendanceBaseUrl = 'https://darotrb0-bit.github.io/MMKDailyattendance/';
-            const urlWithUser = `${attendanceBaseUrl}?userId=${encodeURIComponent(currentUser.id)}`;
+            const userIdParam = `userId=${encodeURIComponent(currentUser.id)}`;
+            const embeddedParam = `embedded=true`; // ◄◄ ប៉ារ៉ាម៉ែត្រថ្មី
+            
+            const urlWithParams = `${attendanceBaseUrl}?${userIdParam}&${embeddedParam}`;
             
             if (attendanceIframe) {
-                attendanceIframe.src = urlWithUser;
+                attendanceIframe.src = urlWithParams;
+                console.log("Loading iframe with URL:", urlWithParams);
             }
             navigateTo('page-daily-attendance');
         });
