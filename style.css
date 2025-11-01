@@ -54,5 +54,18 @@ body { 
     border: none;
 }
 
+/* * ដំណោះស្រាយសម្រាប់ Iframe ពេញអេក្រង់ 
+ */
 
-នេះជា File style.css
+/* នៅពេល Class នេះត្រូវបានបន្ថែម វានឹងបដិសេធ (override) max-w-md */
+#main-app-container.fullscreen-iframe-mode {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    box-shadow: none; /* លុបเงา (shadow) ពេលពេញអេក្រង់ */
+}
+
+/* ធានាថាទំព័រវត្តមានប្រើទំហំពេញ */
+#page-daily-attendance {
+    width: 100%;
+}
