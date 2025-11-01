@@ -4,7 +4,8 @@
 //
 
 // --- Module-scoped variables ---
-let navButtons, bottomNav, mainContent, userPhotoEl, userNameEl, userIdEl, userGenderEl, userGroupEl, userDepartmentEl, historyTabLeave, historyTabOut, historyContainerLeave, historyContainerOut, historyContent, attendanceIframe;
+let navButtons, bottomNav, mainContent, userPhotoEl, userNameEl, userIdEl, userGenderEl, userGroupEl, userDepartmentEl, historyTabLeave, historyTabOut, historyContainerLeave, historyContainerOut, historyContent, attendanceIframe, mainAppContainer;
+
 
 // This array defines all possible page IDs
 const pages = ['page-home', 'page-history', 'page-account', 'page-help', 'page-request-leave', 'page-request-out', 'page-daily-attendance'];
