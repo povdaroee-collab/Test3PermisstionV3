@@ -51,7 +51,7 @@ export async function loadHTMLModules() {
  * This is called from app.js after elements are loaded.
  * @param {object} elements - An object containing references to DOM elements.
  */
-export function initUI(elements) {
+export function initUI(elements, fnToGetUser) {
     // Assign module-scoped variables
     navButtons = elements.navButtons;
     bottomNav = elements.bottomNav;
@@ -90,13 +90,24 @@ export function initUI(elements) {
         historyContent.addEventListener('touchend', handleTouchEnd, false);
     }
 
-    // Daily Attendance Page Logic
     if (elements.openDailyAttendanceBtn) {
         elements.openDailyAttendanceBtn.addEventListener('click', () => {
-            console.log("Opening Daily Attendance page...");
+            const currentUser = fnToGetUser(); // យក User ដែលកំពុង Login
+            
+            if (!currentUser || !currentUser.id) {
+                console.error("Cannot open attendance: user not found.");
+                // អ្នកអាចបង្ហាញ Alert នៅទីនេះ បើចង់
+                return; 
+            }
+            
+            console.log("Opening Daily Attendance page for user:", currentUser.id);
+            
+            // បញ្ជូន User ID តាម URL parameter
+            const attendanceBaseUrl = 'https://darotrb0-bit.github.io/MMKDailyattendance/';
+            const urlWithUser = `${attendanceBaseUrl}?userId=${encodeURIComponent(currentUser.id)}`;
+            
             if (attendanceIframe) {
-                // Set src to load the page
-                attendanceIframe.src = 'https://darotrb0-bit.github.io/MMKDailyattendance/';
+                attendanceIframe.src = urlWithUser;
             }
             navigateTo('page-daily-attendance');
         });
